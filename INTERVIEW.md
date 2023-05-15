@@ -30,7 +30,10 @@ The following challenge seeks to highlight your knowledge of the following:
 
 ### 1. Learn about “bionic reading”
 
-Visit https://bionic-reading.com and read about what it is.[^1]
+##### TL;DR
+Bionic Reading is a method to help you read faster. This is accomplished by bolding the first part of a word. The idea is your eyes focus on the bolded part of the word and your brain completes the rest.
+
+Test it out [here](https://app.bionic-reading.com/). [^1]
 
 ### 2. Implement your own converter function
 
@@ -41,7 +44,7 @@ Write a function that will accept a CSS selector string as an argument—this ha
 - When it finishes execution, the `p` elements within the selected element in the web page should now be formatted similarly to bionic reading
 - The function must process the HTML content _locally_—no calling of APIs that do the conversion remotely
 
-> Note that we aren’t giving an exact definition of how bionic reading format is determined. A reasonable facsimile will do, even if it does not match the official [bionic reading conversion](https://api.bionic-reading.com/convert/) exactly. See additional [Criteria](#criteria) below.
+> Note that we aren’t giving an exact definition of how bionic reading format is determined (ie. the length of the bolded prefix). A reasonable facsimile will do, even if it does not match the official [bionic reading conversion](https://api.bionic-reading.com/convert/) exactly. See additional [Criteria](#criteria) below.
 
 Example of expected result:
 Before                        | After
@@ -66,6 +69,7 @@ Edit _README.md_ so that it describes your function. State what it does, how it 
 
 ### Bionic Plus (Above and Beyond)
 
+- Please make sure the basic requirements above are working before attempting these bonus features
 - The function works when dynamically added to real-world websites (copy-paste into console, invoke function with selector, see results on the current website)[^2]
   - _README.md_ states that this is possible and provides accurate instructions for doing so in addition to a list of sites it was tested on
 - The function includes one or more additional capabilities that goes beyond the basic bionic reading conversion. Including, but not limited to:
