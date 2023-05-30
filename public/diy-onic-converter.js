@@ -1,23 +1,31 @@
 /**
  * Implement your converter function here.
  */
-// const diyOnicConverterSimple = (textContentContainerSelector = 'body', tagToParse = 'p', amountToBold = 3, className = 'ionic', boldTextElement = 'strong') => {
-//   const container = document.querySelector(textContentContainerSelector);
-//   const elements = container.querySelectorAll(tagToParse);
-//   elements.forEach((p) => {
-//     const innerContent = p.innerText || ''
-//     const words = innerContent.split(' ') || [];
-//     p.innerHTML = '';
-//     words.forEach((word) => {
-//       const bold = document.createElement(boldTextElement);
-//       const normal = document.createTextNode(`${word.substr(amountToBold)} `);
-//       bold.classList.add(className)
-//       bold.innerText = word.substring(0, amountToBold);
-//       p.appendChild(bold);
-//       p.appendChild(normal);
-//     })
-//   });
-// };
+
+/*
+
+SIMPLE
+
+*/
+
+const diyOnicConverterSimple = (textContentContainerSelector) => {
+  const container = document.querySelector(textContentContainerSelector);
+  const elements = container.querySelectorAll('p');
+  elements.forEach((p) => {
+    const innerContent = p.innerText || ''
+    const words = innerContent.split(' ') || [];
+    p.innerHTML = '';
+    words.forEach((word) => {
+      const bold = document.createElement('strong');
+      const normal = document.createTextNode(`${word.substr(3)} `);
+      bold.classList.add('diyonic')
+      bold.innerText = word.substring(0, 3);
+      p.appendChild(bold);
+      p.appendChild(normal);
+    })
+  });
+};
+
 
 const diyOnicConverter = (textContentContainerSelector = 'body', tagToParse = 'p', amountToBold = 3, className = 'ionic', boldTextElement = 'strong') => {
   const container = document.querySelector(textContentContainerSelector);
@@ -44,4 +52,4 @@ const diyOnicConverter = (textContentContainerSelector = 'body', tagToParse = 'p
 
 
 // Allow global access so that this can be executed from the console.
-window.diyOnicConverter = diyOnicConverter;
+window.diyOnicConverter = diyOnicConverterSimple;
