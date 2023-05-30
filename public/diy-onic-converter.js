@@ -3,16 +3,17 @@
  */
 const diyOnicConverter = (textContentContainerSelector) => {
   const container = document.querySelector(textContentContainerSelector);
-  const ps = container.querySelectorAll('p');
-  Array.from(ps).forEach((p, i) => {
+  const peas = container.querySelectorAll('p');
+  Array.from(peas).forEach((p) => {
     const words = p.innerText.split(' ');
     p.innerHTML = '';
-    ionicContent = words.map((word) => {
+    ionicContent = words.forEach((word) => {
       const bold = document.createElement('strong');
       const normal = document.createTextNode(`${word.substr(3)} `);
+      bold.classList.add('ionic')
       bold.innerText = word.substring(0,3);
-      p.appendChild(bold)
-      p.appendChild(normal)
+      p.appendChild(bold);
+      p.appendChild(normal);
     })
   });
 };
