@@ -30,7 +30,7 @@ Select all `<p>` tags inside target container
 
 `const peas = container.querySelectorAll('p');`
 
-Convert a DOM node list to an Array for easy manipulation and Iterate over `<p>` tags. `forEach` used since there is no return value.
+Iterate over returned nodes
 
 `Array.from(peas).forEach((p) => {`
 
@@ -68,4 +68,58 @@ Append the new word to the container node
 p.appendChild(bold);
 p.appendChild(normal);
 ```
+
+# Bonus
+
+```
+const diyOnicConverter = (textContentContainerSelector = 'body', tagToParse = 'p', amountToBold = 3, className = 'ionic', boldTextElement = 'strong') => {
+  const container = document.querySelector(textContentContainerSelector);
+  const elements = container.querySelectorAll(tagToParse);
+  Array.from(elements).forEach((p) => {
+    const innerContent = p.innerText || ''
+    const words = innerContent.split(' ') || [];
+    p.innerHTML = '';
+    ionicContent = words.forEach((word) => {
+      const bold = document.createElement(boldTextElement);
+      const normal = document.createTextNode(`${word.substr(amountToBold)} `);
+      bold.classList.add(className)
+      bold.innerText = word.substring(0, amountToBold);
+      p.appendChild(bold);
+      p.appendChild(normal);
+    })
+  });
+};
+```
+
+## Summary of Changes
+
+The function has been enhanced to use custom arguments as well as some added edge case checking.
+
+## Real World Testing
+
+The function works when dynamically added to real-world websites
+
+ - [https://en.wikipedia.org/wiki/HTML](https://en.wikipedia.org/wiki/HTML)
+ - [https://www.espn.com/](https://www.espn.com/)
+ - [https://www.friendbuy.com/blog/high-growth-brands](https://www.friendbuy.com/blog/high-growth-brands)
+
+ ## Configuraion options
+
+ The function accepts parameters to customize use. Including accepting no parameters. For now I'm not checking that the proper type was passed in.
+
+ Arguments (default listed after argument name):
+
+ - __textContentContainerSelector__: 'body'
+ - __tagToParse__: 'p'
+ - __amountToBold__: 3
+ - __className__: 'ionic'
+ - __boldTextElement__: 'strong'
+
+## Apply to whole page not just a specific tag
+
+Use the available arguments
+
+`diyOnicConverter('body', '*')`
+
+
 
