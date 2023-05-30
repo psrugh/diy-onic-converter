@@ -8,18 +8,18 @@ SIMPLE
 
 */
 
-const diyOnicConverterSimple = (textContentContainerSelector) => {
+const diyOnicConverter = (textContentContainerSelector = 'body', tagToParse = 'p', amountToBold = 3, className = 'ionic', boldTextElement = 'strong') => {
   const container = document.querySelector(textContentContainerSelector);
-  const elements = container.querySelectorAll('p');
+  const elements = container.querySelectorAll(tagToParse);
   elements.forEach((p) => {
     const innerContent = p.innerText || ''
     const words = innerContent.split(' ') || [];
     p.innerHTML = '';
     words.forEach((word) => {
-      const bold = document.createElement('strong');
-      const normal = document.createTextNode(`${word.substr(3)} `);
-      bold.classList.add('diyonic')
-      bold.innerText = word.substring(0, 3);
+      const bold = document.createElement(boldTextElement);
+      const normal = document.createTextNode(`${word.substr(amountToBold)} `);
+      bold.classList.add(className)
+      bold.innerText = word.substring(0, amountToBold);
       p.appendChild(bold);
       p.appendChild(normal);
     })
@@ -27,7 +27,7 @@ const diyOnicConverterSimple = (textContentContainerSelector) => {
 };
 
 
-const diyOnicConverter = (textContentContainerSelector = 'body', tagToParse = 'p', amountToBold = 3, className = 'ionic', boldTextElement = 'strong') => {
+const diyOnicConverterMaintainTags = (textContentContainerSelector = 'body', tagToParse = 'p', amountToBold = 3, className = 'ionic', boldTextElement = 'strong') => {
   const container = document.querySelector(textContentContainerSelector);
   const elements = container.querySelectorAll(tagToParse);
   elements.forEach((el) => {
@@ -52,4 +52,4 @@ const diyOnicConverter = (textContentContainerSelector = 'body', tagToParse = 'p
 
 
 // Allow global access so that this can be executed from the console.
-window.diyOnicConverter = diyOnicConverterSimple;
+window.diyOnicConverter = diyOnicConverter;

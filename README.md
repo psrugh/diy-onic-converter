@@ -4,17 +4,18 @@ Coding challenge to make your own (DIY) “bionic reading converter.”
 # Full function
 
 ```
-const diyOnicConverter = (textContentContainerSelector) => {
+const diyOnicConverter = (textContentContainerSelector = 'body', tagToParse = 'p', amountToBold = 3, className = 'ionic', boldTextElement = 'strong') => {
   const container = document.querySelector(textContentContainerSelector);
-  const peas = container.querySelectorAll('p');
-  Array.from(peas).forEach((p) => {
-    const words = p.innerText.split(' ');
+  const elements = container.querySelectorAll(tagToParse);
+  elements.forEach((p) => {
+    const innerContent = p.innerText || ''
+    const words = innerContent.split(' ') || [];
     p.innerHTML = '';
-    ionicContent = words.forEach((word, j) => {
-      const bold = document.createElement('strong');
-      const normal = document.createTextNode(`${word.substr(3)} `);
-      bold.addClass('ionic')
-      bold.innerText = word.substring(0,3);
+    words.forEach((word) => {
+      const bold = document.createElement(boldTextElement);
+      const normal = document.createTextNode(`${word.substr(amountToBold)} `);
+      bold.classList.add(className)
+      bold.innerText = word.substring(0, amountToBold);
       p.appendChild(bold);
       p.appendChild(normal);
     })
