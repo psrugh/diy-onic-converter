@@ -72,10 +72,6 @@ p.appendChild(normal);
 
 # Bonus
 
-## Summary of Changes
-
-The function has been enhanced to use custom arguments as well as some added edge case checking.
-
 ## Real World Testing
 
 The function works when dynamically added to real-world websites
