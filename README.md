@@ -72,26 +72,6 @@ p.appendChild(normal);
 
 # Bonus
 
-```
-const diyOnicConverter = (textContentContainerSelector = 'body', tagToParse = 'p', amountToBold = 3, className = 'ionic', boldTextElement = 'strong') => {
-  const container = document.querySelector(textContentContainerSelector);
-  const elements = container.querySelectorAll(tagToParse);
-  Array.from(elements).forEach((p) => {
-    const innerContent = p.innerText || ''
-    const words = innerContent.split(' ') || [];
-    p.innerHTML = '';
-    ionicContent = words.forEach((word) => {
-      const bold = document.createElement(boldTextElement);
-      const normal = document.createTextNode(`${word.substr(amountToBold)} `);
-      bold.classList.add(className)
-      bold.innerText = word.substring(0, amountToBold);
-      p.appendChild(bold);
-      p.appendChild(normal);
-    })
-  });
-};
-```
-
 ## Summary of Changes
 
 The function has been enhanced to use custom arguments as well as some added edge case checking.
